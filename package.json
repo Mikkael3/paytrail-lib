@@ -1,0 +1,25 @@
+{
+  "name": "paytrail-lib",
+  "version": "1.0.0",
+  "description": "Use paytrail with ts, node",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build; node ./examples/example.js"
+  },
+  "keywords": [
+    "paytrail",
+    "node",
+    "ts"
+  ],
+  "author": "Mikkael3",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.0",
+    "typescript": "^3.6.2"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}
