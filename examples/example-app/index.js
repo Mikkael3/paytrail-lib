@@ -57,17 +57,12 @@ router.get("/create", async ctx => {
 });
 
 router.get("/return", ctx => {
-  const result = rest.confirmPayment({
-    orderNumber: req.query["ORDER_NUMBER"],
-    timestamp: req.query["TIMESTAMP"],
-    paid: req.query["PAID"],
-    method: req.query["METHOD"],
-    authCode: req.query["AUTH_CODE"]
-  });
+  console.log(ctx.query);
+  const result = rest.confirmPaymentFromQuery(ctx.query);
   ctx.body = `Payment confirmation: ${result} `;
 });
 
 app.use(router.routes()).use(router.allowedMethods());
 app.listen(3000);
 
-console.log("App listen port 3000");
+console.log("Example app listen 3000");

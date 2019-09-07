@@ -25,7 +25,7 @@ interface ConfirmQuery {
   TIMESTAMP: string;
   PAID?: string;
   METHOD?: number;
-  AUTH_CODE: string;
+  RETURN_AUTHCODE: string;
 }
 
 class PaytrailRest {
@@ -91,7 +91,7 @@ class PaytrailRest {
     TIMESTAMP: timestamp,
     PAID: paid,
     METHOD: method,
-    AUTH_CODE: authCode
+    RETURN_AUTHCODE: authCode
   }: ConfirmQuery): boolean => {
     return this.checkAuthCode(
       [orderNumber, timestamp, paid, method, this.merchantSecret].filter(

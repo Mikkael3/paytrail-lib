@@ -1,6 +1,6 @@
 {
   "name": "example-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,6 @@
   "dependencies": {
     "koa": "^2.8.1",
     "koa-router": "^7.4.0",
-    "paytrail-lib": "^1.0.0"
+    "paytrail-lib": "^1.0.1"
   }
 }
