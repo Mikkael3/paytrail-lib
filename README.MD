@@ -1,6 +1,6 @@
 # Node, typescript - paytrail-lib
 
-This module allows you to create payments with Paytrail REST-api (https://docs.paytrail.com/en/ch04s05.html).
+This module allows you to create payments with Paytrail REST-api https://docs.paytrail.com/en/ch04s05.html.
 
 # Usage
 
@@ -141,9 +141,9 @@ paytrail.confirmPayment({
 
 ### confirmPaymentFromQuery : boolean
 
-| param | value                                                                                                |
-| ----- | ---------------------------------------------------------------------------------------------------- |
-| query | {ORDER_NUMBER: string!, TIMESTAMP: string!, PAID: string?, METHOD: number?, RETURN_AUTHCODE: strin!} |
+| param | value                                                                                                 |
+| ----- | ----------------------------------------------------------------------------------------------------- |
+| query | {ORDER_NUMBER: string!, TIMESTAMP: string!, PAID: string?, METHOD: number?, RETURN_AUTHCODE: string!} |
 
 ```js
 // koa and koa-router example

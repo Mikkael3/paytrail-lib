@@ -1,6 +1,6 @@
 {
   "name": "paytrail-lib",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "README.MD",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,7 +14,7 @@
     "ts"
   ],
   "author": "Mikkael3",
-  "repository": "https://github.com/Mikkael3/paytrail-lib",  
+  "repository": "https://github.com/Mikkael3/paytrail-lib",
   "license": "MIT",
   "devDependencies": {
     "@types/node-fetch": "^2.5.0",
