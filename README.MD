@@ -28,7 +28,7 @@ const paymentWithPrice = {
   orderNumber: "12345678",
   price: 499999.99
 };
-paytrail.createPayment(paymentWithPrice).then({orderNumber, token, url} => {
+paytrail.createPayment(paymentWithPrice).then(({orderNumber, token, url}) => {
   console.log(orderNumber, token, url);
   }
 ).catch(error => {console.log(error.message)});
