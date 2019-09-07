@@ -4,6 +4,12 @@ This module allows you to create payments with Paytrail REST-api (https://docs.p
 
 # Usage
 
+installation:
+
+```bash
+npm i paytrail-lib
+```
+
 Example usage to create payment with price:
 
 ```Js
@@ -59,6 +65,62 @@ const paytrail = new PaytrailLib("13466", "6pKF4jkv97zmqBJ3ZL8gUw5DfT2NMQ", {
 | locale          | string? (default: fi_FI)                                                                                                                                                                                                                                                                                                                                                 |
 | orderDetails    | {invludeVat: boolean!, products[]: [{title: string!, code: string?, amount: number, price: number, vat: number, discount:number?, type?: (number, default 1) }]!,contact:{firstName:string, lastName: string, companyName: string?, email: string, telephone: string?, mobile: string?, {address: {street: string!, postalCode!, postalOffice!, country: string!}!}}!}?; |
 | price           | number? (Note: you only can have price if you dont have orderDetails)                                                                                                                                                                                                                                                                                                    |
+
+```js
+const paymentWithPrice = {
+  orderNumber: "12345678",
+  price: 499999.99
+};
+try {
+  const { url, token, orderNumber } = await paytrail.createPayment(
+    paymentWithPrice
+  );
+} catch {
+  //
+}
+
+const paymentWithOrderDetails = {
+  orderNumber: "12345678",
+  description: "Cat",
+  currency: "EUR",
+  locale: "fi_FI",
+  orderDetails: {
+    includeVat: true,
+    contact: {
+      firstName: "Cat",
+      lastName: "Cat",
+      companyName: "Cat Oy",
+      email: "cat@cat.com",
+      telephone: "04123123123",
+      mobile: "040404040440",
+      address: {
+        street: "Cat 1",
+        postalCode: "123123",
+        postalOffice: "CAt",
+        country: "FI"
+      }
+    },
+    products: [
+      {
+        title: "Cat",
+        code: "Cat",
+        amount: 100000,
+        price: 0.78,
+        vat: 23,
+        discount: 0,
+        type: 1
+      }
+    ]
+  }
+};
+try {
+  const { url2, token2, orderNumber2 } = await paytrail.createPayment(
+    paymentWithOrderDetails
+  );
+} catch {
+  //
+}
+```
 
 ### confirmPayment: boolean
 
