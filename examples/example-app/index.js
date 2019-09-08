@@ -8,7 +8,7 @@ const router = new Router();
 
 const rest = new PaytrailRest("13466", "6pKF4jkv97zmqBJ3ZL8gUw5DfT2NMQ", {
   success: "https://paytrail-lib.tk/return",
-  failure: "https://pytrail-lib.tk/return",
+  failure: "https://paytrail-lib.tk/return",
   notification: "https://paytrail-lib.tk/return"
 });
 

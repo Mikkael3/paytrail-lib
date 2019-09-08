@@ -114,7 +114,7 @@ const paymentWithOrderDetails = {
   }
 };
 try {
-  const { url2, token2, orderNumber2 } = await paytrail.createPayment(
+  const { url: url2, token: token2, orderNumber: orderNumber2 } = await paytrail.createPayment(
     paymentWithOrderDetails
   );
 } catch {
