@@ -11,6 +11,6 @@
   "dependencies": {
     "koa": "^2.13.4",
     "koa-router": "^7.4.0",
-    "paytrail-lib": "^1.0.8"
+    "paytrail-lib": "^1.0.9"
   }
 }
