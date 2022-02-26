@@ -1,6 +1,6 @@
 # Node, typescript - paytrail-lib
 
-This module allows you to create payments with Paytrail REST-api https://docs.paytrail.com/en/ch04s05.html.
+This module allows you to create payments with Paytrail REST-api https://docs-old.paytrail.com/legacy/rest-interface/payment-creation/.
 
 # Usage
 

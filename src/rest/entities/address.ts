@@ -1,18 +1,14 @@
 import { Address as AddressData, RequestData } from "../interfaces";
 
-class Address implements RequestData {
+class Address implements RequestData<AddressData> {
   private street!: string;
   private postalCode!: string;
   private postalOffice!: string;
   private country!: string;
 
   constructor(addressData: AddressData) {
-    const {
-      street,
-      postalCode,
-      postalOffice,
-      country
-    }: AddressData = addressData;
+    const { street, postalCode, postalOffice, country }: AddressData =
+      addressData;
     this.setStreet(street);
     this.setPostalCode(postalCode);
     this.setPostalOffice(postalOffice);
@@ -42,12 +38,12 @@ class Address implements RequestData {
     this.country = country;
   };
 
-  toJson = (): AddressData => {
+  toJson = () => {
     const data = {
       street: this.street,
       postalCode: this.postalCode,
       postalOffice: this.postalOffice,
-      country: this.country
+      country: this.country,
     };
     return data;
   };

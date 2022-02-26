@@ -9,8 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.8.1",
+    "koa": "^2.13.4",
     "koa-router": "^7.4.0",
-    "paytrail-lib": "^1.0.1"
+    "paytrail-lib": "^1.0.7"
   }
 }

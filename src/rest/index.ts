@@ -1,4 +1,5 @@
 import { Payment, UrlSet } from "./interfaces";
+
 import PaymentEntity from "./entities/payment";
 import UrlSetEntity from "./entities/url-set";
 import fetch from "node-fetch";
@@ -27,6 +28,10 @@ interface ConfirmQuery {
   METHOD?: number;
   RETURN_AUTHCODE: string;
 }
+
+const isPaymentDetails = (details: any): details is PaymentDetails => {
+  return "orderNumber" in details && "url" in details && "token" in details;
+};
 
 class PaytrailRest {
   private urlSet!: UrlSetEntity;
@@ -60,14 +65,20 @@ class PaytrailRest {
             "Basic " +
             Buffer.from(`${this.merchantId}:${this.merchantSecret}`).toString(
               "base64"
-            )
-        }
+            ),
+        },
       });
       const json = await result.json();
-      if (result.ok) return json;
+      if (result.ok && isPaymentDetails(json)) {
+        return json;
+      }
       throw new Error(`Paytrail Rest api-error: ${JSON.stringify(json)}`);
     } catch (error) {
-      throw new Error("Paytrail-lib error: " + error.message);
+      if (error instanceof Error)
+        throw new Error("Paytrail-lib error: " + error.message);
+      throw new Error(
+        "Paytrail-lib error while doing request to create payment"
+      );
     }
   };
 
@@ -76,11 +87,11 @@ class PaytrailRest {
     timestamp,
     paid,
     method,
-    authCode
+    authCode,
   }: Confirm): boolean => {
     return this.checkAuthCode(
       [orderNumber, timestamp, paid, method, this.merchantSecret].filter(
-        item => item
+        (item) => item
       ),
       authCode
     );
@@ -91,11 +102,11 @@ class PaytrailRest {
     TIMESTAMP: timestamp,
     PAID: paid,
     METHOD: method,
-    RETURN_AUTHCODE: authCode
+    RETURN_AUTHCODE: authCode,
   }: ConfirmQuery): boolean => {
     return this.checkAuthCode(
       [orderNumber, timestamp, paid, method, this.merchantSecret].filter(
-        item => item
+        (item) => item
       ),
       authCode
     );

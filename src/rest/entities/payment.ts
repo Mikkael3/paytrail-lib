@@ -1,17 +1,16 @@
 import {
-  Payment as PaymentData,
-  UrlSet as UrlSetData,
   OrderDetails as OrderDetailsData,
-  RequestData
+  Payment as PaymentData,
+  RequestData,
 } from "../interfaces";
-import UrlSet from "./url-set";
+
 import OrderDetails from "./order-details";
 import paymentConsts from "../../consts/payment";
 
 const CURRENCIES = ["EUR"];
 const LOCALES = ["fi_FI", "sv_SE", "en_US"];
 
-class Payment implements RequestData {
+class Payment implements RequestData<PaymentData> {
   private orderNumber: string = "";
   private referenceNumber?: number;
   private description?: string;
@@ -28,7 +27,7 @@ class Payment implements RequestData {
       currency,
       locale,
       orderDetails,
-      price
+      price,
     }: PaymentData = paymentData;
     this.setOrderNumber(orderNumber);
     this.setReferenceNumber(referenceNumber);
@@ -111,7 +110,7 @@ class Payment implements RequestData {
     let json: PaymentData = {
       orderNumber: this.orderNumber,
       currency: this.currency,
-      locale: this.locale
+      locale: this.locale,
     };
     if (this.referenceNumber) json.referenceNumber = this.referenceNumber;
     if (this.description) json.description = this.description;

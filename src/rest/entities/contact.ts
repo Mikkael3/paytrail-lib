@@ -1,18 +1,19 @@
 import {
-  Contact as ContactData,
   Address as AddressData,
-  RequestData
+  Contact as ContactData,
+  RequestData,
 } from "../interfaces";
+
 import Address from "./address";
 import { validateEmail } from "../../utils/email-utils";
 
 enum Type {
   NORMAL = 1,
   SHIPPING = 2,
-  HANDLING = 3
+  HANDLING = 3,
 }
 
-class Contact implements RequestData {
+class Contact implements RequestData<ContactData> {
   private firstName!: string;
   private lastName!: string;
   private companyName?: string;
@@ -29,7 +30,7 @@ class Contact implements RequestData {
       email,
       telephone,
       mobile,
-      address
+      address,
     } = contactData;
     this.setFirstName(firstName);
     this.setLastName(lastName);
@@ -78,13 +79,13 @@ class Contact implements RequestData {
     this.address = new Address(address);
   };
 
-  toJson = (): ContactData => {
+  toJson = () => {
     const json: ContactData = {
       firstName: this.firstName,
       lastName: this.lastName,
       companyName: this.companyName,
       email: this.email,
-      address: this.address.toJson()
+      address: this.address.toJson(),
     };
 
     if (this.telephone) json.telephone = this.telephone;

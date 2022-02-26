@@ -1,7 +1,8 @@
-import { UrlSet as UrlSetData, RequestData } from "../interfaces";
+import { RequestData, UrlSet as UrlSetData } from "../interfaces";
+
 import { validateUrl } from "../../utils/url-utils";
 
-class UrlSet implements RequestData {
+class UrlSet implements RequestData<UrlSetData> {
   private success!: string;
   private failure!: string;
   private notification!: string;
@@ -28,10 +29,10 @@ class UrlSet implements RequestData {
     this.notification = notification;
   };
 
-  toJson = (): UrlSetData => ({
+  toJson = () => ({
     success: this.success,
     failure: this.failure,
-    notification: this.notification
+    notification: this.notification,
   });
 }
 

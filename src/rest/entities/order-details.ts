@@ -1,25 +1,22 @@
 import {
-  OrderDetails as OrderDetailsData,
   Contact as ContactData,
+  OrderDetails as OrderDetailsData,
   Product as ProductData,
-  RequestData
+  RequestData,
 } from "../interfaces";
 
 import Contact from "./contact";
 import Product from "./product";
 import paymentConsts from "../../consts/payment";
 
-class OrderDetails implements RequestData {
+class OrderDetails implements RequestData<OrderDetailsData> {
   private includeVat: number = 0;
   private contact!: Contact;
   private products!: Product[];
 
   constructor(orderDetailsData: OrderDetailsData) {
-    const {
-      includeVat,
-      contact,
-      products
-    }: OrderDetailsData = orderDetailsData;
+    const { includeVat, contact, products }: OrderDetailsData =
+      orderDetailsData;
     this.setIncludeVat(includeVat);
     this.setContact(contact);
     this.setProducts(products);
@@ -39,11 +36,11 @@ class OrderDetails implements RequestData {
     );
   };
 
-  toJson = (): OrderDetailsData => {
+  toJson = () => {
     const json = {
       includeVat: this.includeVat,
       contact: this.contact.toJson(),
-      products: this.products.map(product => product.toJson())
+      products: this.products.map((product) => product.toJson()),
     };
     const price: number = json.products
       .map((product: ProductData): number => product.price * product.amount)

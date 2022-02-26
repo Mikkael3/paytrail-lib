@@ -5,7 +5,7 @@ const MAX_DISCOUNT = 100;
 
 const TYPES = [1, 2, 3];
 
-class Product implements RequestData {
+class Product implements RequestData<ProductData> {
   private title!: string;
   private code?: string;
   private amount: number = 1;
@@ -15,15 +15,8 @@ class Product implements RequestData {
   private type: number = 1;
 
   constructor(productData: ProductData) {
-    const {
-      title,
-      code,
-      amount,
-      price,
-      vat,
-      discount,
-      type
-    }: ProductData = productData;
+    const { title, code, amount, price, vat, discount, type }: ProductData =
+      productData;
     this.setTitle(title);
     this.setCode(code);
     this.setAmount(amount);
@@ -76,14 +69,14 @@ class Product implements RequestData {
     this.type = type;
   };
   //todo total price amount * price
-  toJson = (): ProductData => {
+  toJson = () => {
     let json: ProductData = {
       title: this.title,
       amount: this.amount,
       price: this.price,
       vat: this.vat,
       discount: this.discount,
-      type: this.type
+      type: this.type,
     };
     if (this.code) json.code = this.code;
     return json;

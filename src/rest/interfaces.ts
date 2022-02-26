@@ -46,8 +46,8 @@ interface Payment {
   price?: number;
 }
 
-interface RequestData {
-  toJson: () => any;
+interface RequestData<T> {
+  toJson: () => T;
 }
 
 export {
@@ -57,5 +57,5 @@ export {
   OrderDetails,
   Contact,
   Address,
-  Product
+  Product,
 };
